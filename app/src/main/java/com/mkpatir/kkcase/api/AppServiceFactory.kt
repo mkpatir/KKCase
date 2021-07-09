@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AppServiceFactory {
 
-    private const val BASE_URL = ""
+    private const val BASE_URL = "https://example.com"
 
     fun buildService(
         authTokenInterceptor: AuthTokenInterceptor

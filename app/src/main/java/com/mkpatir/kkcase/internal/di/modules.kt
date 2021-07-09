@@ -33,8 +33,8 @@ val appModule = module(true) {
 }
 
 val viewModelModule = module(true) {
-    viewModel { MainViewModel(get(), get()) }
-    viewModel { NextViewModel(get(), get()) }
+    viewModel { MainViewModel(get(), get(), get()) }
+    viewModel { NextViewModel(get(), get(), get()) }
 }
 
 val appModules = listOf(appModule, viewModelModule)
