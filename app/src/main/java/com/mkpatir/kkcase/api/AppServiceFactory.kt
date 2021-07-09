@@ -7,23 +7,26 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AppServiceFactory {
 
-    private const val BASE_URL = "https://www.vitrinova.com/api/v2/"
+    private const val BASE_URL = ""
 
-    fun buildService(): AppService{
+    fun buildService(
+        authTokenInterceptor: AuthTokenInterceptor
+    ): AppService{
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(buildHttpClient())
+            .client(buildHttpClient(authTokenInterceptor))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         return retrofit.create(AppService::class.java)
     }
 
-    private fun buildHttpClient(): OkHttpClient{
+    private fun buildHttpClient(authTokenInterceptor: AuthTokenInterceptor): OkHttpClient{
         val okHttpClientBuilder = OkHttpClient.Builder().apply {
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
+            addInterceptor(authTokenInterceptor)
         }
         return okHttpClientBuilder.build()
     }

@@ -50,7 +50,8 @@ dependencies {
     implementation androidDependencies.coroutineAndroid
     implementation androidDependencies.viewModelLifecycle
     implementation androidDependencies.recyclerView
-    implementation androidDependencies.swipeRefreshLayout
+    implementation androidDependencies.roomRuntime
+    kapt androidDependencies.roomCompailer
 
     implementation thirdPartyDependencies.koin
     implementation thirdPartyDependencies.koinScope
@@ -61,7 +62,7 @@ dependencies {
     implementation thirdPartyDependencies.lottie
     implementation thirdPartyDependencies.glide
     annotationProcessor thirdPartyDependencies.glideCompailer
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
