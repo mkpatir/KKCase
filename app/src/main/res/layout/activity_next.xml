@@ -1,10 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="detailData"
+            type="com.mkpatir.kkcase.api.models.DriverDetailResponse" />
+
+        <variable
+            name="driverData"
+            type="com.mkpatir.kkcase.api.models.DriverData" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:padding="@dimen/margin_l"
+        tools:ignore="ContentDescription">
+
+        <View
+            android:id="@+id/bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_rectangle_athens_grey"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/img_driver"/>
+
+        <ImageView
+            android:id="@+id/img_driver"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="@dimen/margin_l"
+            android:paddingBottom="@dimen/margin_l"
+            circleImgUrl="@{detailData.image}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/ic_point"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_l"
+            android:textColor="@color/gulf_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@{driverData.name}"
+            tools:text="Lewis Hamilton"
+            app:layout_constraintTop_toTopOf="@id/img_driver"
+            app:layout_constraintStart_toEndOf="@id/img_driver"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_driver_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_s"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/cutty_sark"
+            android:text="@{detailData.team}"
+            tools:text="Mercedes"
+            app:layout_constraintTop_toBottomOf="@id/text_driver_name"
+            app:layout_constraintStart_toStartOf="@id/text_driver_name"/>
+
+        <View
+            android:id="@+id/bg_details"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_m"
+            android:layout_marginBottom="@dimen/margin_m"
+            android:layout_marginEnd="@dimen/margin_l"
+            android:background="@drawable/bg_rectangle_heather"
+            app:layout_constraintTop_toBottomOf="@id/text_driver_team"
+            app:layout_constraintBottom_toBottomOf="@id/img_driver"
+            app:layout_constraintStart_toStartOf="@id/text_driver_name"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/age"
+            android:textColor="@color/cutty_sark"
+            app:layout_constraintTop_toTopOf="@id/bg_details"
+            app:layout_constraintBottom_toTopOf="@id/text_age"
+            app:layout_constraintStart_toStartOf="@id/bg_details"
+            app:layout_constraintEnd_toStartOf="@id/title_point"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{detailData.age.toString()}"
+            tools:text="34"
+            app:layout_constraintTop_toBottomOf="@id/title_age"
+            app:layout_constraintBottom_toBottomOf="@id/bg_details"
+            app:layout_constraintStart_toStartOf="@id/title_age"
+            app:layout_constraintEnd_toEndOf="@id/title_age"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point"
+            android:textColor="@color/cutty_sark"
+            app:layout_constraintTop_toTopOf="@id/bg_details"
+            app:layout_constraintBottom_toTopOf="@id/text_age"
+            app:layout_constraintStart_toEndOf="@id/title_age"
+            app:layout_constraintEnd_toEndOf="@id/bg_details"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{driverData.point.toString()}"
+            tools:text="338"
+            app:layout_constraintTop_toBottomOf="@id/title_point"
+            app:layout_constraintBottom_toBottomOf="@id/bg_details"
+            app:layout_constraintStart_toStartOf="@id/title_point"
+            app:layout_constraintEnd_toEndOf="@id/title_point"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

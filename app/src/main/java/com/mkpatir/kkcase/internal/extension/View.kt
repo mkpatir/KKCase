@@ -6,13 +6,17 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
 @BindingAdapter("imgUrl")
-fun ImageView.loadImageFromUrl(url: String){
-    Glide.with(this.context.applicationContext).load(url).into(this)
+fun ImageView.loadImageFromUrl(url: String?){
+    url?.let {
+        Glide.with(this.context.applicationContext).load(it).into(this)
+    }
 }
 
 @BindingAdapter("circleImgUrl")
-fun ImageView.loadCircleImageFromUrl(url: String){
-    Glide.with(this.context.applicationContext).load(url).circleCrop().into(this)
+fun ImageView.loadCircleImageFromUrl(url: String?){
+    url?.let {
+        Glide.with(this.context.applicationContext).load(url).circleCrop().into(this)
+    }
 }
 
 fun View.visible(){

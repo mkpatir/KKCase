@@ -8,14 +8,43 @@
         android:background="@color/white"
         tools:context=".ui.main.MainActivity">
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_decreasing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            app:backgroundTint="@color/cutty_sark"
+            android:text="@string/decreasing"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textAppearance="@style/ShapeAppearance.MaterialComponents.LargeComponent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_increasing"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_increasing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/thunder_bird"
+            android:text="@string/increasing"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textAppearance="@style/ShapeAppearance.MaterialComponents.LargeComponent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_decreasing"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_drivers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="@dimen/margin_m"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/button_decreasing"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:listitem="@layout/item_driver"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

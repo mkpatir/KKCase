@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mkpatir.kkcase.cache.models.TableModel
+import com.mkpatir.kkcase.cache.models.FavoriteModel
 
-@Database(entities = [TableModel::class],version = 1)
+@Database(entities = [FavoriteModel::class],version = 1)
 abstract class DBManager: RoomDatabase() {
 
-    abstract fun favoritesDAO(): TableDAO
+    abstract fun favoritesDAO(): FavoritesDAO
 
     companion object {
 
